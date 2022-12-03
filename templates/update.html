@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div id="content">
+
+	{% with messages = get_flashed_messages(category_filter=["category1"]) %}
+	{% if messages %}
+	<class=flashes>
+	  {% for message in messages %}
+		<button class="button button3">{{ message }}</button>
+	  {% endfor %}
+	{% endif %}
+  {% endwith %}
+
+  {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+	{% if messages %}
+	  <ul class=flashes>
+	  {% for message in messages %}
+	  <button class="button button3">{{ message }}</button>
+	  {% endfor %}
+	{% endif %}
+  {% endwith %}
+
+{% if name %}
+	<h1>Lagt til!</h1> <a href="{{ url_for('index')}}">Tilbake</a>
+	<br/><br/>
+<table class="table table-hover table-bordered table-striped"></table>
+
+{% for our_user in our_users %}
+
+<h1>Parkering</h1>
+	<form method="POST">
+		{{ form.hidden_tag() }}
+
+	<table id="settinn">
+		<tr>
+			<td></td>
+			<td></td>
+			</tr>
+			<td>{{ form.fornavn.label(class="form-label") }}</td>
+			<td>{{ form.fornavn(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			<td>{{ form.etternavn.label(class="form-label") }}</td>
+			<td>{{ form.etternavn(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			<td>{{ form.ansattnr.label(class="form-label") }}</td>
+			<td>{{ form.ansattnr(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			<td>{{ form.avdeling.label(class="form-label") }}</td>
+			<td>{{ form.avdeling(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			<td>{{ form.regnr1.label(class="form-label") }}</td>
+			<td>{{ form.regnr1(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			</tr>
+			<td>{{ form.bilmerke1.label(class="form-label") }}</td>
+			<td>{{ form.bilmerke1(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			</tr>
+			<td>{{ form.regnr2.label(class="form-label") }}</td>
+			<td>{{ form.regnr2(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			</tr>
+			<td>{{ form.bilmerke2.label(class="form-label") }}</td>
+			<td>{{ form.bilmerke2(class="form-control", autocomplete="off") }}</td>
+			</tr>
+			</tr>
+			<td></td>
+			<td style="text-align:right">{{ form.submit(class="btn btn-secondary") }}</td>
+			</tr>
+		</table>
+	</form>
+	<tr>
+	<th>Fornavn</th>
+    <th>Etternavn</th>
+    <th>Country</th>
+	<td>{{ our_user.id }}. {{ our_user.fornavn }} - {{ our_user.etternavn }} - {{ our_user.avdeling }} - {{ our_user.regnr1 }} - {{ our_user.bilmerke1 }} - {{ our_user.regnr2 }} - {{ our_user.bilmerke2 }}</td>
+	</tr>
+{% endfor %}
+
+</table>
+
+
+{% else %}
+	<h1>Oppdater ansatt</h1>
+	<p><a href="{{ url_for('index')}}">Tilbake uten endringer</a></p>
+
+	<form action="/update/{{ name_to_update.id }}" method="POST">
+		{{ form.hidden_tag() }}
+
+		<table id="settinn">
+			<tr>
+				<td></td>
+				<td></td>
+				</tr>
+				<td>{{ form.fornavn.label(class="form-label") }}</td>
+				<td>{{ form.fornavn(class="form-control", autocomplete="off", value=name_to_update.fornavn) }}</td>
+				</tr>
+				<td>{{ form.etternavn.label(class="form-label") }}</td>
+				<td>{{ form.etternavn(class="form-control", autocomplete="off", value=name_to_update.etternavn) }}</td>
+				</tr>
+				<td>{{ form.ansattnr.label(class="form-label") }}</td>
+				<td>{{ form.ansattnr(class="form-control", autocomplete="off", value=name_to_update.ansattnr) }}</td>
+				</tr>
+				<td>{{ form.avdeling.label(class="form-label") }}</td>
+				<td>{{ form.avdeling(class="form-control", autocomplete="off", value=name_to_update.avdeling) }}</td>
+				</tr>
+				<td>{{ form.regnr1.label(class="form-label") }}</td>
+				<td>{{ form.regnr1(class="form-control", autocomplete="off", value=name_to_update.regnr1) }}</td>
+				</tr>
+				</tr>
+				<td>{{ form.bilmerke1.label(class="form-label") }}</td>
+				<td>{{ form.bilmerke1(class="form-control", autocomplete="off", value=name_to_update.bilmerke1) }}</td>
+				</tr>
+				</tr>
+				<td>{{ form.regnr2.label(class="form-label") }}</td>
+				<td>{{ form.regnr2(class="form-control", autocomplete="off", value=name_to_update.regnr2) }}</td>
+				</tr>
+				</tr>
+				<td>{{ form.bilmerke2.label(class="form-label") }}</td>
+				<td>{{ form.bilmerke2(class="form-control", autocomplete="off", value=name_to_update.bilmerke2) }}</td>
+				</tr>
+				</tr>
+				<td></td>
+				<td>{{ form.submit1(class="btn btn-secondary") }}</td>
+
+				</tr>
+			</table>
+
+
+	</form>
+<br/><br/>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

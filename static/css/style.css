@@ -1,0 +1,103 @@
+body {
+	background-color: rgb(255, 255, 255);
+}
+  div.content {
+    max-width: 60%;
+    font-family: helvetica;
+
+  }
+
+  h1 {
+  font-family: helvetica;
+}
+
+/* unvisited link */
+a:link {
+  color: #000000;
+  font-family: helvetica;
+}
+
+/* visited link */
+a:visited {
+  color: #000000;
+  font-family: helvetica;
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(255, 0, 0);
+  font-family: helvetica;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+  font-family: helvetica;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.melding {
+  font-family: helvetica;
+
+}
+
+.header {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 100px;
+  font-family: helvetica;
+}
+
+
+#settinn {
+  font-family: helvetica;
+}
+
+.button3 {
+  background-color: #f51717; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: #23b828;; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div id="content">
+
+	
+	{% with messages = get_flashed_messages(category_filter=["category1"]) %}
+	{% if messages %}
+	  <class=flashes>
+	  {% for message in messages %}
+		<button class="button button2">{{ message }}</button>
+	  {% endfor %}
+	{% endif %}
+  {% endwith %}
+  
+  {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+	{% if messages %}
+	  <class=flashes>
+	  {% for message in messages %}
+	  	<button class="button button3">{{ message }}</button>
+	  {% endfor %}
+	{% endif %}
+  {% endwith %}
+
+
+<form method="POST">
+	{{ form.hidden_tag() }}
+
+<table id="settinn">
+	<tr>
+		<td></td>
+		<td></td>
+		</tr>
+		<td>{{ form.fornavn.label(class="form-label") }}</td>
+		<td>{{ form.fornavn(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		<td>{{ form.etternavn.label(class="form-label") }}</td>
+		<td>{{ form.etternavn(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		<td>{{ form.ansattnr.label(class="form-label") }}</td>
+		<td>{{ form.ansattnr(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		<td>{{ form.avdeling.label(class="form-label") }}</td>
+		<td>{{ form.avdeling(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		<td>{{ form.regnr1.label(class="form-label") }}</td>
+		<td>{{ form.regnr1(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		</tr>
+		<td>{{ form.bilmerke1.label(class="form-label") }}</td>
+		<td>{{ form.bilmerke1(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		</tr>
+		<td>{{ form.regnr2.label(class="form-label") }}</td>
+		<td>{{ form.regnr2(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		</tr>
+		<td>{{ form.bilmerke2.label(class="form-label") }}</td>
+		<td>{{ form.bilmerke2(class="form-control", autocomplete="off") }}</td>
+		</tr>
+		</tr>
+		<td></td>
+		<td style="text-align:right">{{ form.submit(class="btn btn-secondary") }}</td>
+		</tr>	
+	</table>
+</form>
+	
+	<h1>Parkering</h1>
+	<form method="POST">
+		{{ form.hidden_tag() }}
+
+
+
+<table id="liste">
+		
+	<tr>
+	  <th>Fornavn</th>
+	  <th>Etternavn</th>
+	  <th>Ansattnummer</th>
+	  <th>Avdeling</th>
+	  <th>Regnr 1</th>
+	  <th>Bilmerke 1</th>
+	  <th>Regnr 2</th>
+	  <th>Bilmerke 2</th>
+	  <th>Slett</th>
+	</tr>
+	<tr>{% for our_user in our_users %}<td><a href="{{ url_for('update', id=our_user.id)}}">{{ our_user.fornavn }}</a></td>
+		<td>{{ our_user.etternavn }}</td>
+		<td>{{ our_user.ansattnr }}</td>
+		<td>{{ our_user.avdeling }}</td>
+		<td>{{ our_user.regnr1 }}</td>
+		<td>{{ our_user.bilmerke1 }}</td>
+		<td>{{ our_user.regnr2 }}</td>
+		<td>{{ our_user.bilmerke2 }}</td>
+		<td><a href="{{ url_for('delete', id=our_user.id)}}">Slett</a></td>
+	</tr>
+
+	{% endfor %}
+</table>
+
+</div>
+
+
+
+{% endblock %}
